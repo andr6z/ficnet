@@ -9,12 +9,12 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/clientes/">Clientes</a></li>
-            <li><a href="/planos">Planos</a></li>
-            <li><a href="/contato/">Contato</a></li>
-            <li><a href="/sobre/">Sobre</a></li>
-            <li><a href="/login/">Login</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'clientes' %}">Clientes</a></li>
+        <li><a href="{% url 'planos' %}">Planos</a></li>
+        <li><a href="{% url 'contato' %}">Contato</a></li>
+        <li><a href="{% url 'sobre' %}">Sobre</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
         </ul>
     </nav>
     Ficnet - Olá seja bem-vindo ao sistema
