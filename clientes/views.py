@@ -4,5 +4,5 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'base.html')
 
-def teste(request):
-    return HttpResponse("Teste de view")
+def lista_clientes(request):
+    return render(request, 'clientes.html')
