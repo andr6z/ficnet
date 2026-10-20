@@ -7,16 +7,51 @@
     <title>Home</title>
 </head>
 <body>
-    <nav>
-        <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'clientes' %}">Clientes</a></li>
-        <li><a href="{% url 'planos' %}">Planos</a></li>
-        <li><a href="{% url 'contato' %}">Contato</a></li>
-        <li><a href="{% url 'sobre' %}">Sobre</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
+    <header>
+        <nav>
+            <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'clientes-home' %}">Clientes</a></li>
+            <li><a href="{% url 'planos' %}">Planos</a></li>
+            <li><a href="{% url 'contato' %}">Contato</a></li>
+            <li><a href="{% url 'sobre' %}">Sobre</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <footer>
+        <ul tag="redes-sociais">
+            <li><a href="">Siga nas redes sociais</a></li>
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Instagram</a></li>
+            <li><a href="">Linkedin</a></li>
+            <li><a href="">Youtube</a></li>
+            </li>
         </ul>
-    </nav>
-    Ficnet - Olá seja bem-vindo ao sistema
+        <ul tag="contato">
+            <li><a href="">Contato</a></li>
+            <li><a href="">Email</a></li>
+            <li><a href="">Telefone</a></li>
+            <li><a href="">WhatsApp</a></li>
+        </ul>
+        <ul tag="empresa">
+            <li><a href="">Sobre</a></li>
+            <li><a href="">Missão</a></li>
+            <li><a href="">Visão</a></li>
+            <li><a href="">Valores</a></li>
+        </ul>
+        <ul tag="links-uteis">
+            <li><a href="">Links úteis</a></li>
+            <li><a href="">Política de privacidade</a></li>
+            <li><a href="">Termos de uso</a></li>
+            <li><a href="">FAQ</a></li>
+        </ul>
+        <ul tag="endereços">
+            <li><a href="">Endereços</a></li>
+            <li><a href="">Rua A, 123 - Bairro B - Cidade C</a></li>
+            <li><a href="">Rua D, 456 - Bairro E - Cidade F</a></li>
+            <li><a href="">Rua G, 789 - Bairro H - Cidade I</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
