@@ -5,8 +5,33 @@ body {
     background-color: #ededed;
 }
 
-nav{
-    background-color: blueviolet;
-    padding: 5%;
+.header{
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 100px;
+    background-color: rgb(61, 3, 115);
+    padding: 0px 20px;
+}
 
+.nav{
+    max-width: 1200px;
+    width: 100%;
+    background-color: aliceblue;
+    margin: 0 auto ;
+}
+
+.nav ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+footer{
+    background-color: blueviolet;
+    text-align:center;
+    color:white;
 }
