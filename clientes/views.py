@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 def lista_clientes(request):
     return render(request, 'clientes.html')
