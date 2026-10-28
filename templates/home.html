@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Planos de Internet - Ficnet{% endblock %}
+
+{% block content %}
+    <section class="home">
+        <div class="pag1">
+            <h1>Bem-vindo à Ficnet!</h1>
+            <h4>Conectamos você e sua familia ao mundo digital em alta qualidade!</h4>
+            <button class="verplanos">Ver Planos</button>
+        </div>
+        <img
+        src="{% static '/assets/base.jpg' %}"
+        alt="Banner principal"
+        >
+    </section>
+
+<section class="carrossel">
+    <button class="seta anterior" aria-label="Imagem anterior">
+        &#10094;
+    </button>
+
+    <div class="slides">
+        <img src="{% static '/assets/internet.jpg' %}"
+             alt="Imagem 1" class="slide ativa">
+
+        <img src="{% static '/assets/internet2.jpg' %}"
+             alt="Imagem 2" class="slide">
+
+        <img src="{% static '/assets/internet3.jpg' %}"
+             alt="Imagem 3" class="slide">
+    </div>
+
+    <button class="seta proxima" aria-label="Próxima imagem">
+        &#10095;
+    </button>
+</section>
+
+{% endblock %}
