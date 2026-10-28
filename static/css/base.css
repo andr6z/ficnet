@@ -5,6 +5,11 @@ body {
     background-color: #ededed;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .header{
     position: fixed;
     height: 60px;
@@ -22,16 +27,53 @@ body {
     margin: 0 auto ;
 }
 
-.nav ul{
+.menu {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.menu-list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.menu a:hover{
+    color: white;
+}
 
 footer{
     background-color: blueviolet;
     text-align:center;
     color:white;
+}
+
+
+
+
+
+/* Estilização para o banner principal */
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px;
+}
+
+.pag1 {
+    flex: 1;
+}
+
+.home img {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
 }
