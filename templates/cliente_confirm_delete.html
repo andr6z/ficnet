@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Cliente - Ficnet{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Confirmar Exclusão</h1>
+        <p>Tem certeza que deseja excluir o cliente <strong>{{ cliente.nome }} {{ cliente.sobrenome }}</strong> ({{ cliente.cpf }})?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Sim, excluir</button>
+            <a href="{% url 'clientes-home' %}">Cancelar</a>
+        </form>
+    </section>
+{% endblock %}

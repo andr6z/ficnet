@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="script" href="{% static 'js/carrossel.js' %}">
     <title>{% block title %}Ficnet{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="menu">
-            <ul>
+            <ul class="menu-list">
+               <li><a href="">$#</a></li>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'clientes-home' %}">Clientes</a></li>
                 <li><a href= "{% url 'planos' %}">Planos</a></li>
                 <!-- <li><a href="">Contato</a></li> -->
                 <!-- <li><a href=">Sobre</a></li> -->
-                <!-- <li><a href="">Login</a></li> -->
             </ul>
             <button class="button">Login</button>
         </nav>

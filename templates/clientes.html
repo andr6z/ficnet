@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Clientes - Ficnet{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Clientes Cadastrados</h1>
+        <p><a href="{% url 'novo-cliente' %}">+ Cadastrar Novo Cliente</a></p>
+
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Nome Completo</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Plano Contratado</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.nome }} {{ cliente.sobrenome }}</td>
+                        <td>{{ cliente.cpf }}</td>
+                        <td>{{ cliente.telefone }}</td>
+                        <td>{{ cliente.plano.nome|default:"Sem plano" }}</td>
+                        <td>{% if cliente.ativo %}Ativo{% else %}Inativo{% endif %}</td>
+                        <td>
+                            <a href="{% url 'editar-cliente' cliente.id %}">Editar</a> |
+                            <a href="{% url 'excluir-cliente' cliente.id %}">Excluir</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">Nenhum cliente cadastrado ainda.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
