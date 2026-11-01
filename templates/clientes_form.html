@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Cliente - Ficnet{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Cadastrar Novo Cliente</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar Cliente</button>
+            <a href="{% url 'clientes-home' %}">Cancelar</a>
+        </form>
+    </section>
+{% endblock %}

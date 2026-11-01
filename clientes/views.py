@@ -18,7 +18,7 @@ def novo_cliente(request):
     else:
         form = ClienteForm()
 
-    return render(request, 'clientesForm.html', {'form': form})
+    return render(request, 'clientes_form.html', {'form': form})
 
 
 def editar_cliente(request, id):
@@ -31,7 +31,7 @@ def editar_cliente(request, id):
     else:
         form = ClienteForm(instance=cliente)
 
-    return render(request, 'clientesForm.html', {'form': form, 'cliente': cliente})
+    return render(request, 'clientes_form.html', {'form': form, 'cliente': cliente})
 
 def excluir_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
