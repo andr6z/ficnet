@@ -11,15 +11,28 @@
 <body>
     <header>
         <nav class="menu">
-            <ul class="menu-list">
-               <li><a href="">$#</a></li>
+            <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'clientes-home' %}">Clientes</a></li>
-                <li><a href= "{% url 'planos' %}">Planos</a></li>
-                <!-- <li><a href="">Contato</a></li> -->
-                <!-- <li><a href=">Sobre</a></li> -->
+                <li><a href="{% url 'planos' %}">Planos</a></li>
+
+                {% if user.is_authenticated %}
+                    {% if user.perfil.setor == 'CLIENTE' %}
+            <!-- O Cliente vê apenas a própria conta -->
+                    <li><a href="{% url 'area-cliente' %}">Minha Conta</a></li>
+                {% else %}
+            <!-- Apenas Admin e Funcionários veem a gestão de clientes -->
+                    <li><a href="{% url 'clientes-home' %}">Clientes</a></li>
+                {% endif %}
+
+                    <li><a href="{% url 'logout' %}">Sair ({{ user.username }})</a></li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">
+                            <button class="button" type="button">Login</button>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
-            <button class="button">Login</button>
         </nav>
     </header>
 
