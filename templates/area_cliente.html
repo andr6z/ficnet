@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Central do Assinante - Ficnet{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Olá, {{ user.username }}! Bem-vindo à Central do Assinante</h1>
+
+        {% if cliente %}
+            <p><strong>Nome:</strong> {{ cliente.nome }} {{ cliente.sobrenome }}</p>
+            <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
+            <p><strong>Endereço instalado:</strong> {{ cliente.endereco }}</p>
+            <p><strong>Seu Plano Atual:</strong> {{ cliente.plano.nome }} ({{ cliente.plano.velocidade }} Mbps) - R$ {{ cliente.plano.preco }}/mês</p>
+        {% else %}
+            <p>Sua conta ainda não está vinculada a um contrato ativo.</p>
+        {% endif %}
+
+        <p><a href="{% url 'planos' %}">Ver ofertas para upgrade de plano</a></p>
+        <p><a href="{% url 'logout' %}">Sair da conta</a></p>
+    </section>
+{% endblock %}
