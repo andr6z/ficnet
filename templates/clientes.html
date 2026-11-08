@@ -7,6 +7,14 @@
         <h1>Clientes Cadastrados</h1>
         <p><a href="{% url 'novo-cliente' %}">+ Cadastrar Novo Cliente</a></p>
 
+        <form method="GET" style="margin-bottom: 20px;">
+            <input type="text" name="q" value="{{busca}}" placeholder="Buscar por nome ou cpf">
+            <button type="submit">Pesquisar</button>
+            {% if busca %}
+                <a href="{% url 'clientes-home' %}">Limpar filtro</a>
+            {% endif %}
+        </form>
+
         <table border="1" cellpadding="8">
             <thead>
                 <tr>

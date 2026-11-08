@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Q
 from .models import Cliente
 from .forms import ClienteForm
 
-# Função que retorna True apenas para Admin e Funcionários (bloqueia CLIENTE)
 def eh_funcionario(user):
     if not user.is_authenticated:
         return False
@@ -17,8 +17,17 @@ def home(request):
 @login_required(login_url='login')
 @user_passes_test(eh_funcionario, login_url='area-cliente')
 def lista_clientes(request):
+    busca = request.GET.get('q', '')
     clientes = Cliente.objects.select_related('plano').all()
-    return render(request, 'clientes.html', {'clientes': clientes})
+
+    if busca:
+        clientes = clientes.filter(
+            Q(nome__icontains=busca) |
+            Q(sobrenome__icontains=busca) |
+            Q(cpf__icontains=busca)
+        )
+
+    return render(request, 'clientes.html', {'clientes': clientes, 'busca': busca})
 
 @login_required(login_url='login')
 @user_passes_test(eh_funcionario, login_url='area-cliente')
