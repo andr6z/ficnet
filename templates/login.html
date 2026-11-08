@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Ficnet{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Acesso ao Sistema Ficnet</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                <label>Usuário:</label><br>
+                <input type="text" name="username" required>
+            </p>
+            <p>
+                <label>Senha:</label><br>
+                <input type="password" name="password" required>
+            </p>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+{% endblock %}
