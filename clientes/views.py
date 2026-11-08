@@ -1,28 +1,42 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Cliente
 from .forms import ClienteForm
+
+# Função que retorna True apenas para Admin e Funcionários (bloqueia CLIENTE)
+def eh_funcionario(user):
+    if not user.is_authenticated:
+        return False
+    if hasattr(user, 'perfil') and user.perfil.setor == 'CLIENTE':
+        return False
+    return True
 
 def home(request):
     return render(request, 'home.html')
 
+@login_required(login_url='login')
+@user_passes_test(eh_funcionario, login_url='area-cliente')
 def lista_clientes(request):
     clientes = Cliente.objects.select_related('plano').all()
     return render(request, 'clientes.html', {'clientes': clientes})
 
+@login_required(login_url='login')
+@user_passes_test(eh_funcionario, login_url='area-cliente')
 def novo_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
         if form.is_valid():
-            form.save()  
-            return redirect('clientes-home')  
+            form.save()
+            return redirect('clientes-home')
     else:
         form = ClienteForm()
 
-    return render(request, 'clientes_form.html', {'form': form})
+    return render(request, 'clientesForm.html', {'form': form})
 
-
+@login_required(login_url='login')
+@user_passes_test(eh_funcionario, login_url='area-cliente')
 def editar_cliente(request, id):
-    cliente = get_object_or_404(Cliente, id=id)  
+    cliente = get_object_or_404(Cliente, id=id)
     if request.method == 'POST':
         form = ClienteForm(request.POST, instance=cliente)
         if form.is_valid():
@@ -31,12 +45,14 @@ def editar_cliente(request, id):
     else:
         form = ClienteForm(instance=cliente)
 
-    return render(request, 'clientes_form.html', {'form': form, 'cliente': cliente})
+    return render(request, 'clientesForm.html', {'form': form, 'cliente': cliente})
 
+@login_required(login_url='login')
+@user_passes_test(eh_funcionario, login_url='area-cliente')
 def excluir_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     if request.method == 'POST':
-        cliente.delete()  
+        cliente.delete()
         return redirect('clientes-home')
 
     return render(request, 'cliente_confirm_delete.html', {'cliente': cliente})
