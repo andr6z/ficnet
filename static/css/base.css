@@ -53,7 +53,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #00b4d8;
+    color: #c300ffb1;
 }
 
 main {
@@ -61,19 +61,16 @@ main {
     min-height: calc(100vh - 200px);
 }
 
-/* Área grande do banner (92% da largura e 75% da altura da tela) */
 .hero-carousel {
     position: relative;
-    width: 100vw;                /* Ocupa 100% da largura do monitor */
-    height: 75vh;               /* Ocupa 75% da altura do monitor */
+    width: 98vw;                
+    height: 90vh;          
     min-height: 450px;
-    margin: 15px auto;
-    margin-left: calc(50% - 50vw);
+    margin: 8px auto;
     overflow: hidden;
     background: #111;
 }
 
-/* Coloca o slide e a imagem no FUNDO (z-index: 1) */
 .slide {
     position: absolute;
     inset: 0;
@@ -87,11 +84,10 @@ main {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;           /* Preenche 100% do espaço sem recortar as bordas (ou use cover) */
+    object-fit: cover;           
     display: block;
 }
 
-/* Coloca o bloco de texto na FRENTE da imagem de fundo (z-index: 5) */
 .overlay {
     position: absolute;
     inset: 0;
@@ -181,14 +177,18 @@ footer {
     text-align: center;
     color: white;
     padding: 20px;
+    display: flex;
+    justify-content: space-between
+        
 }
 
 footer ul li {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+    padding: 5px 0;
+    margin: 5px 0;
     gap: 20px;
 }
 
+footer ul li :hover{
+    color: #c300ffb1;
+}
