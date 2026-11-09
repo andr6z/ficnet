@@ -1,26 +1,35 @@
-
 const slides = document.querySelectorAll(".hero-carousel .slide");
 const anterior = document.querySelector(".hero-carousel .anterior");
 const proxima = document.querySelector(".hero-carousel .proxima");
 
-let indiceAtual = 0;
+if (slides.length > 0 && anterior && proxima) {
+    let indiceAtual = 0;
+    let timer = iniciarTimer();
 
-function mostrarSlide(novoIndice) {
-    slides[indiceAtual].classList.remove("active");
+    function mostrarSlide(novoIndice) {
+        slides[indiceAtual].classList.remove("active");
+        indiceAtual = (novoIndice + slides.length) % slides.length;
+        slides[indiceAtual].classList.add("active");
+    }
 
-    indiceAtual = (novoIndice + slides.length) % slides.length;
+    function iniciarTimer() {
+        return setInterval(() => {
+            mostrarSlide(indiceAtual + 1);
+        }, 5000);
+    }
 
-    slides[indiceAtual].classList.add("active");
+    function reiniciarTimer() {
+        clearInterval(timer);
+        timer = iniciarTimer();
+    }
+
+    anterior.addEventListener("click", () => {
+        mostrarSlide(indiceAtual - 1);
+        reiniciarTimer();
+    });
+
+    proxima.addEventListener("click", () => {
+        mostrarSlide(indiceAtual + 1);
+        reiniciarTimer();
+    });
 }
-
-anterior.addEventListener("click", () => {
-    mostrarSlide(indiceAtual - 1);
-});
-
-proxima.addEventListener("click", () => {
-    mostrarSlide(indiceAtual + 1);
-});
-
-setInterval(() => {
-    mostrarSlide(indiceAtual + 1);
-}, 5000);
