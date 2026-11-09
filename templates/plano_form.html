@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Plano - Ficnet{% endblock %}
+
+{% block content %}
+    <section style="max-width: 600px; margin: 30px auto; padding: 0 20px;">
+        <h1>Cadastrar Novo Plano</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar Plano</button>
+            <a href="{% url 'planos' %}">Cancelar</a>
+        </form>
+    </section>
+{% endblock %}
